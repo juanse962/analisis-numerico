@@ -31,5 +31,5 @@ def binary_to_integer(number_binary):
                 
         return str(aux1)
 
-binary_to_integer('1100')
-binary_to_integer('11000.0001')
+print(binary_to_integer('1100'))
+print(binary_to_integer('11000.0001'))

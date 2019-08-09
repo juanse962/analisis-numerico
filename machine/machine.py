@@ -1,54 +1,83 @@
-#!/usr/bin/python3
+import maquina32
  
-def pedirNumeroEntero():
- 
-    correcto=False
-    num=0
-    while(not correcto):
-        try:
-            num = int(input("Introduce un numero entero: "))
-            correcto=True
-        except ValueError:
-            print('Error, introduce un numero entero')
-     
-    return num
+def solicitarMaquina():
+    digitosValidos = False
 
-def decimalToBinary(number):
+    while not digitosValidos:
+        mantisa = input("Numero de la mantisa: ")
+        exponente = input("Numero del exponente: ")
+    
+        if len(mantisa) is not 0 and len(exponente) is not 0 and mantisa.isdigit() and exponente.isdigit():
+            maquina = maquina32.crear_maquina(int(exponente), int(mantisa))
+            if not maquina:
+                print ('Bits de mantisa y exponente invalidos para maquina de 32-bits.')
+            else:
+                digitosValidos = True
+        else:
+            print('Digitos invalidos \n')
+    return maquina
 
-    num = number
-    l = []
+def seleccionarOpcion():
+    salir = False
+    while not salir:
+        print("\n Seleccione una opcion")
+        print("1. Calcular numero mas grande de la maquina")
+        # FIXME: ARREGLAR Ñ
+        print("2. Calcular numero mas pequenio de la maquina")
+        print("3. Calcular epsilon de la maquina")
+        print("4. Convertir base 10 a numero de maquina")
+        print("5. Convertir numero de maquina a base 10")
+        print("6. Sumar numeros de maquina")
+        print("7. Restar numeros de maquina")
+        print("8. Multiplicar numeros de maquina")
+        print("9. Cambiar maquina")
+        print("10. Salir")
+        opcion = input("")
+        if len(opcion) is not 0 and opcion.isdigit(): return (int(opcion))
 
-    while num >= 1:
-        l.insert(0,num%2)
-        num = num // 2
 
-    result = "".join(str(i) for i in l)
-
-    return result
-
-salir = False
-opcion = 0
- 
-while salir != True:
- 
-    print ("1. Opcion 1")
-    print ("2. Opcion 2")
-    print ("3. Opcion 3")
-    print ("4. Salir")
-
-    print ("Elige una opcion")
- 
-    opcion = pedirNumeroEntero()
- 
+print ("Bienvenido maquina de 32 bits")
+maquina = solicitarMaquina()
+while True :
+    opcion = seleccionarOpcion()
     if opcion == 1:
-        print ("Opcion 1")
+        1
     elif opcion == 2:
-        print ("Opcion 2")
+        2
     elif opcion == 3:
-        print("Opcion 3")
+        3
     elif opcion == 4:
-        salir = True
+        numero = input("Introduce el numero en base 10: ")
+        if len(numero) is not 0:
+            maquina = maquina32.almacenar_en_maquina(maquina, numero)
+            maquina = maquina32.maquina_to_cadena(maquina)
+            print('El resultado es: ',maquina)
+
+        else:
+            print ("Input invalido")
+        
+    elif opcion == 5:
+        cadena = input("Introduce el numero en base 10: ")
+        if len(cadena) is not 0:
+            print("El resultado es: ", maquina32.binary_to_integer(cadena))
+        else:
+            print ("Input invalido")
+    elif opcion == 6:
+        6
+    elif opcion == 7:
+        7
+    elif opcion == 8:
+        8
+    elif opcion == 9:
+        9
+    elif opcion == 10:
+          break
     else:
-        print ("Introduce un numero entre 1 y 3")
+        print("Opcion invalida")
+
+
+a = maquina32.crear_maquina(3,3)
+
  
-print ("Fin",int(5.643443344))
+
+ 

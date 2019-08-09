@@ -111,6 +111,7 @@ def maquina_to_cadena(maquina):
     bit_significativo = maquina['mantisa']
     exponente = int(binary_to_integer(maquina['exponente'])) - 1
     sign_exponente = maquina['signoExp']
+    sign_mantiza = maquina['signoMant']
     index = 0
     cadena = []
 
@@ -134,8 +135,13 @@ def maquina_to_cadena(maquina):
                 decimal = bit_significativo[index:]
                 cadena ='1' + cadena[1:] + '.' + decimal
                 break
-
+    
+    
     cadena = binary_to_integer(cadena)
+    if sign_mantiza == 0:
+        cadena = '-' + cadena
+    else:
+        cadena = '+' + cadena
     return cadena
 
         

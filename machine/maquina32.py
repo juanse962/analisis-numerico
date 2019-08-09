@@ -24,7 +24,7 @@ def base10_base2(number, places):
   
     whole = int(whole) 
     dec = int (dec) 
-    7
+    
     res = bin(whole).lstrip("0b") + "."
   
     for x in range(places): 

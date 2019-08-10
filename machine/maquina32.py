@@ -117,53 +117,35 @@ def binary_to_integer(number_binary):
         return str(aux1)
 
 def maquina_to_cadena(maquina):
-
     bit_significativo = maquina['mantisa']
-    exponente = int(binary_to_integer(maquina['exponente'])) - 1
+    exponente = int(binary_to_integer(maquina['exponente']))
     sign_exponente = maquina['signoExp']
     sign_mantiza = maquina['signoMant']
     index = 0
     cadena = []
-
-    if sign_exponente == 0:
-
-        for i in bit_significativo:
-
-            if index == exponente:
-                break
+    if  int(maquina['signoExp']) == 0:
+        for i in range(0,exponente,1):
             cadena.append('0')
-            index += 1
-            
-        cadena = str("".join(cadena))
-        cadena = cadena + '.' + bit_significativo[exponente:]
-
+        cadena1 = str("".join(cadena))
+        cadena2 = '0.'+cadena1+bit_significativo
+        cadena2 = binary_to_integer(cadena2)
+        return cadena2
+        
     else:
         for i in bit_significativo:
-
+            if index == (exponente-1):
+                break
             cadena.append(i)
             index += 1
-
-            if index == exponente:
-
-                cadena.append(i)
-                cadena = str("".join(cadena))
-                index += 1
-                decimal = bit_significativo[index:]
-                cadena ='1' + cadena[1:] + '.' + decimal
-                break
+        
+        cadena1 = str("".join(cadena))
+        cadena2 = bit_significativo[exponente-1:-1]
+        cadena1 = '1' + cadena1 + '.' +cadena2
+        cadena1 = binary_to_integer(cadena1)
     
-    
-    cadena = binary_to_integer(cadena)
-
-    if sign_mantiza == 0:
-        cadena = '-' + cadena
-    else:
-        cadena = '+' + cadena
-    return cadena
-
+        return cadena1
         
 def almacenar_en_maquina(maquina, numero):
-    numero= float(numero)
     if numero < 0: 
         numero *= -1
         maquina['signoMant'] = 0

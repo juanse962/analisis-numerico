@@ -57,9 +57,10 @@ while True :
 
         numero = input("Introduce el numero en base 10: ")
         if len(numero) is not 0:
-            maquina = maquina32.almacenar_en_maquina(maquina, numero)
-            maquina = maquina32.maquina_to_cadena(maquina)
-            print('El numero que guarda la maquina es: ',maquina)
+            numero = float(numero)
+            maquina1 = maquina32.almacenar_en_maquina(maquina, numero)
+            maquina2 = maquina32.maquina_to_cadena(maquina1)
+            print('El numero que guarda la maquina es: ',maquina2)
 
         else:
             print ("Input invalido")

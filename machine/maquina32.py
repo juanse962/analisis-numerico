@@ -181,11 +181,12 @@ def sum_or_rest_or_mult(maquina,operation):
         sum2 = float(sum2.replace(" ",""))
 
         almacenar_sum1 = almacenar_en_maquina(maquina,sum1)
-        almacenar_sum1 = maquina_to_cadena(almacenar_sum1)
+        almacenar_sum1 = float(maquina_to_cadena(almacenar_sum1))
 
         almacenar_sum2 = almacenar_en_maquina(maquina,sum2)
-        almacenar_sum2 = maquina_to_cadena(almacenar_sum2)
-        return float(almacenar_sum1) + float(almacenar_sum2)
+        almacenar_sum2 = float(maquina_to_cadena(almacenar_sum2))
+        result = lambda almacenar_sum1,almacenar_sum2: almacenar_sum1 + almacenar_sum2
+        return result(almacenar_sum1,almacenar_sum2)
 
     if '-' in operation:
 
@@ -194,11 +195,12 @@ def sum_or_rest_or_mult(maquina,operation):
         res2 = float(res2.replace(" ",""))
 
         almacenar_res1 = almacenar_en_maquina(maquina,res1)
-        almacenar_res1 = maquina_to_cadena(almacenar_res1)
+        almacenar_res1 = float(maquina_to_cadena(almacenar_res1))
 
         almacenar_res2 = almacenar_en_maquina(maquina,res2)
-        almacenar_res2 = maquina_to_cadena(almacenar_res2)
-        return float(almacenar_res1) - float(almacenar_res2)
+        almacenar_res2 = float(maquina_to_cadena(almacenar_res2))
+        result = lambda almacenar_res1,almacenar_res2: almacenar_res1 - almacenar_res2
+        return result(almacenar_res1,almacenar_res2)
 
     if '*' in operation:
 
@@ -207,9 +209,10 @@ def sum_or_rest_or_mult(maquina,operation):
         mul1 = float(mul1.replace(" ",""))
 
         almacenar_mul1 = almacenar_en_maquina(maquina,mul1)
-        almacenar_mul1 = maquina_to_cadena(almacenar_mul1)
+        almacenar_mul1 = float(maquina_to_cadena(almacenar_mul1))
 
         almacenar_mul2 = almacenar_en_maquina(maquina,mul2)
-        almacenar_mul2 = maquina_to_cadena(almacenar_mul2)
-        return float(almacenar_mul1) * float(almacenar_mul2)
+        almacenar_mul2 = float(maquina_to_cadena(almacenar_mul2))
+        result = lambda almacenar_mul1,almacenar_mul2: almacenar_mul1 * almacenar_mul2
+        return result(almacenar_mul1,almacenar_mul2)
 

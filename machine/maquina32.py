@@ -143,9 +143,23 @@ def maquina_to_cadena(maquina):
         cadena1 = '1' + cadena1 + '.' +cadena2
         cadena1 = binary_to_integer(cadena1)
     
+<<<<<<< HEAD
         return cadena1
         
 def almacenar_en_maquina(maquina, numero):
+=======
+    cadena = binary_to_integer(cadena)
+
+    if sign_mantiza == 0:
+        cadena = '-' + cadena
+    else:
+        cadena = '+' + cadena
+    return cadena
+        
+def almacenar_en_maquina(maquina, numero):
+    numero= float(numero)
+    print("numero ", numero)
+>>>>>>> 24ca0e05630fb2599f57b0faf18da1e0fd68cef4
     if numero < 0: 
         numero *= -1
         maquina['signoMant'] = 0

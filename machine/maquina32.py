@@ -127,9 +127,9 @@ def maquina_to_cadena(maquina):
         for i in range(0,exponente,1):
             cadena.append('0')
         cadena1 = str("".join(cadena))
-        cadena2 = '0.'+cadena1+bit_significativo
-        cadena2 = binary_to_integer(cadena2)
-        return cadena2
+        cadena1 = '0.'+cadena1+bit_significativo
+        cadena1 = binary_to_integer(cadena1)
+        return cadena1
         
     else:
         for i in bit_significativo:
@@ -143,23 +143,9 @@ def maquina_to_cadena(maquina):
         cadena1 = '1' + cadena1 + '.' +cadena2
         cadena1 = binary_to_integer(cadena1)
     
-<<<<<<< HEAD
         return cadena1
         
 def almacenar_en_maquina(maquina, numero):
-=======
-    cadena = binary_to_integer(cadena)
-
-    if sign_mantiza == 0:
-        cadena = '-' + cadena
-    else:
-        cadena = '+' + cadena
-    return cadena
-        
-def almacenar_en_maquina(maquina, numero):
-    numero= float(numero)
-    print("numero ", numero)
->>>>>>> 24ca0e05630fb2599f57b0faf18da1e0fd68cef4
     if numero < 0: 
         numero *= -1
         maquina['signoMant'] = 0
@@ -193,7 +179,7 @@ def sum_or_rest_or_mult(maquina,operation):
 
         almacenar_sum2 = almacenar_en_maquina(maquina,sum2)
         almacenar_sum2 = maquina_to_cadena(almacenar_sum2)
-        return int(almacenar_sum1) + int(almacenar_sum2)
+        return float(almacenar_sum1) + float(almacenar_sum2)
 
     if '-' in operation:
 
@@ -206,7 +192,7 @@ def sum_or_rest_or_mult(maquina,operation):
 
         almacenar_res2 = almacenar_en_maquina(maquina,res2)
         almacenar_res2 = maquina_to_cadena(almacenar_res2)
-        return int(almacenar_res1) - int(almacenar_res2)
+        return float(almacenar_res1) - float(almacenar_res2)
 
     if '*' in operation:
 
@@ -219,5 +205,5 @@ def sum_or_rest_or_mult(maquina,operation):
 
         almacenar_mul2 = almacenar_en_maquina(maquina,mul2)
         almacenar_mul2 = maquina_to_cadena(almacenar_mul2)
-        return int(almacenar_mul1) * int(almacenar_mul2)
+        return float(almacenar_mul1) * float(almacenar_mul2)
 

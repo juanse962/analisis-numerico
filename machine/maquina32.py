@@ -1,5 +1,5 @@
 def crear_maquina(bits_exponente, bits_mantisa):
-
+    
     if bits_exponente + bits_mantisa != 30:
         return False
     else:    
@@ -163,17 +163,15 @@ def maquina_to_cadena(maquina):
 
         
 def almacenar_en_maquina(maquina, numero):
-
-    binario = base10_base2(float(numero), maquina['bits_mantisa'])
-    print(binario)
-
+    numero= float(numero)
+    if numero < 0: 
+        numero *= -1
+        maquina['signoMant'] = 0
+    binario = base10_base2(numero,maquina['bits_mantisa'])
     normalzado = normalizar_bin(maquina['bits_exponente'], binario)
-    print(normalzado)
-
     maquina['mantisa'] = normalzado['binarioNormalizado'][3:maquina['bits_mantisa']+3]
     maquina['exponente'] = normalzado['exponente'][0:maquina['bits_exponente']]
-    print(maquina)
-
+    maquina['signoExp'] = normalzado['signo']
     return maquina
 
 def sum_or_rest_or_mult(maquina,operation):

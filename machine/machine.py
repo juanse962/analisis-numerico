@@ -27,7 +27,7 @@ def seleccionarOpcion():
     while not salir:
         print("\n Seleccione una opcion")
         print("1. Calcular numero mas grande de la maquina")
-        print("2. Calcular numero mas pequeño de la maquina")
+        print("2. Calcular numero mas pequenio de la maquina")
         print("3. Calcular epsilon de la maquina")
         print("4. Convertir base 10 a numero de maquina")
         print("5. Convertir numero de maquina a base 10")

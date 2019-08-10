@@ -148,8 +148,8 @@ def maquina_to_cadena(maquina):
         cadena1 = '1' + cadena1 + '.' +cadena2
         cadena1 = binary_to_integer(cadena1)
     
-    if sign_mantiza == 0: return '-' + cadena1
-    else: return '+' + cadena1
+    if sign_mantiza == 0: return -float(cadena1)
+    else: return float(cadena1)
 
 def almacenar_en_maquina(maquina, numero):
     if numero < 0: 
@@ -162,57 +162,14 @@ def almacenar_en_maquina(maquina, numero):
     maquina['signoExp'] = normalzado['signo']
     return maquina
 
-def sum_or_rest_or_mult(maquina,operation):
+def sum_or_rest_or_mult(numero1, numero2, operacion, maquina):
 
-    sum1 = 0
-    sum2 = 0
-    operation = operation
-    res1 = 0 
-    res2 = 0
-    mul1 = 0
-    mul2 = 0
-    result = 0
+    maquina = almacenar_en_maquina(maquina, numero1)
+    numero1 = maquina_to_cadena(maquina)
+
+    maquina = almacenar_en_maquina(maquina, numero2)
+    numero2 = maquina_to_cadena(maquina) 
     
-    
-    if '+' in operation:
-
-        sum1,sum2 = operation.split("+")
-        sum1 = float(sum1.replace(" ",""))
-        sum2 = float(sum2.replace(" ",""))
-
-        almacenar_sum1 = almacenar_en_maquina(maquina,sum1)
-        almacenar_sum1 = float(maquina_to_cadena(almacenar_sum1))
-
-        almacenar_sum2 = almacenar_en_maquina(maquina,sum2)
-        almacenar_sum2 = float(maquina_to_cadena(almacenar_sum2))
-        result = lambda almacenar_sum1,almacenar_sum2: almacenar_sum1 + almacenar_sum2
-        return result(almacenar_sum1,almacenar_sum2)
-
-    if '-' in operation:
-
-        res1,res2 = operation.split("-")
-        res1 = float(res1.replace(" ",""))
-        res2 = float(res2.replace(" ",""))
-
-        almacenar_res1 = almacenar_en_maquina(maquina,res1)
-        almacenar_res1 = float(maquina_to_cadena(almacenar_res1))
-
-        almacenar_res2 = almacenar_en_maquina(maquina,res2)
-        almacenar_res2 = float(maquina_to_cadena(almacenar_res2))
-        result = lambda almacenar_res1,almacenar_res2: almacenar_res1 - almacenar_res2
-        return result(almacenar_res1,almacenar_res2)
-
-    if '*' in operation:
-
-        mul1,mul2 = operation.split("*")
-        mul2 = float(mul2.replace(" ",""))
-        mul1 = float(mul1.replace(" ",""))
-
-        almacenar_mul1 = almacenar_en_maquina(maquina,mul1)
-        almacenar_mul1 = float(maquina_to_cadena(almacenar_mul1))
-
-        almacenar_mul2 = almacenar_en_maquina(maquina,mul2)
-        almacenar_mul2 = float(maquina_to_cadena(almacenar_mul2))
-        result = lambda almacenar_mul1,almacenar_mul2: almacenar_mul1 * almacenar_mul2
-        return result(almacenar_mul1,almacenar_mul2)
-
+    if operacion == '+': return numero1 + numero2
+    elif operacion == '-': return numero1 - numero2
+    else: return numero1 * numero2

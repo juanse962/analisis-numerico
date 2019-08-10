@@ -18,6 +18,8 @@ def solicitarMaquina():
                 digitosValidos = True
         else:
             print('Digitos invalidos \n')
+    print("Bits-Exponente: ", exponente)
+    print("Bits-Mantisa: ", mantisa)
     return maquina
 
 def seleccionarOpcion():
@@ -30,9 +32,9 @@ def seleccionarOpcion():
         print("3. Calcular epsilon de la maquina")
         print("4. Convertir base 10 a numero de maquina")
         print("5. Convertir numero de maquina a base 10")
-        print("6. Sumar numeros de maquina")
-        print("7. Restar numeros de maquina")
-        print("8. Multiplicar numeros de maquina")
+        print("6. Sumar numeros")
+        print("7. Restar numeros")
+        print("8. Multiplicar numeros")
         print("9. Cambiar maquina")
         print("10. Salir")
         opcion = input("")
@@ -57,16 +59,18 @@ while True :
         numero = input("Introduce el numero en base 10: ")
         if len(numero) is not 0:
             numero = float(numero)
-            maquina1 = maquina32.almacenar_en_maquina(maquina, numero)
-            maquina2 = maquina32.maquina_to_cadena(maquina1)
-            print('El numero que guarda la maquina es: ',maquina2)
+            maquina = maquina32.almacenar_en_maquina(maquina, numero)
+            print('signo exponente: ',maquina['signoExp'])
+            print('signo mantisa: ',maquina['signoMant'])
+            print('exponente: ',maquina['exponente'])
+            print('mantisa: ',maquina['mantisa'])
 
         else:
             print ("Input invalido")
         
     elif opcion == 5:
 
-        cadena = input("Introduce el numero en base 10: ")
+        cadena = input("Introduce el numero en base 2: ")
         if len(cadena) is not 0:
             print("El resultado es: ", maquina32.binary_to_integer(cadena))
         else:
@@ -74,36 +78,33 @@ while True :
 
     elif opcion == 6:
 
-        operation = str(input('Operacion: '))
-        if '+' in operation:
-            result = maquina32.sum_or_rest_or_mult(maquina,operation)
-            print('El resultado es: ',result)
+        numero1 = input("Numero 1: ")
+        numero2 = input("Numero 2: ")
+        if len(numero1) is not 0 and len(numero2) is not 0:
+            print('El resultado es: ',maquina32.sum_or_rest_or_mult(float(numero1), float(numero2), '+', maquina))
         else:
             print ("Input invalido")
         
     elif opcion == 7:
 
-        operation = str(input('Operacion: '))
-
-        if '-' in operation:
-            result = maquina32.sum_or_rest_or_mult(maquina,operation)
-            print('El resultado es: ',result)
+        numero1 = input("Numero 1: ")
+        numero2 = input("Numero 2: ")
+        if len(numero1) is not 0 and len(numero2) is not 0:
+            print('El resultado es: ',maquina32.sum_or_rest_or_mult(float(numero1), float(numero2), '-', maquina))
         else:
             print ("Input invalido")
 
     elif opcion == 8:
         
-        operation = str(input('Operacion: '))
-
-        if '*' in operation:
-            result = maquina32.sum_or_rest_or_mult(maquina,operation)
-            print('El resultado es: ',result)
+        numero1 = input("Numero 1: ")
+        numero2 = input("Numero 2: ")
+        if len(numero1) is not 0 and len(numero2) is not 0:
+            print('El resultado es: ',maquina32.sum_or_rest_or_mult(float(numero1), float(numero2), '*', maquina))
         else:
             print ("Input invalido")
 
     elif opcion == 9:
         maquina = solicitarMaquina()
-        print(maquina)
     elif opcion == 10:
           break
     else:

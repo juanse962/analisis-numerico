@@ -117,22 +117,27 @@ def binary_to_integer(number_binary):
         return str(aux1)
 
 def maquina_to_cadena(maquina):
+
     bit_significativo = maquina['mantisa']
     exponente = int(binary_to_integer(maquina['exponente']))
     sign_exponente = maquina['signoExp']
     sign_mantiza = maquina['signoMant']
     index = 0
     cadena = []
+
     if  int(maquina['signoExp']) == 0:
+
         for i in range(0,exponente,1):
             cadena.append('0')
+
         cadena1 = str("".join(cadena))
         cadena1 = '0.'+cadena1+bit_significativo
         cadena1 = binary_to_integer(cadena1)
-        return cadena1
         
     else:
+
         for i in bit_significativo:
+
             if index == (exponente-1):
                 break
             cadena.append(i)
@@ -143,8 +148,9 @@ def maquina_to_cadena(maquina):
         cadena1 = '1' + cadena1 + '.' +cadena2
         cadena1 = binary_to_integer(cadena1)
     
-        return cadena1
-        
+    if sign_mantiza == 0: return '-' + cadena1
+    else: return '+' + cadena1
+
 def almacenar_en_maquina(maquina, numero):
     if numero < 0: 
         numero *= -1

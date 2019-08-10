@@ -38,17 +38,21 @@ def base10_base2(number, places):
     return res 
 
 def normalizar_bin(bits_exponente, binario):
-    index = -1
-    for i in binario:
-        index += 1
-        if i == '1': break
-        if i == '.': index -= 1
-        binario = binario[1:]
-    binarioPartido = binario.split('.')[0]
-    if len(binario.split('.')) == 2:
-        binarioPartido = binario.split('.')[0] + binario.split('.')[1]
 
-    binarioPartido = '0.'+ binarioPartido
+    binarioPartido = binario.split('.')
+    if '1' in binarioPartido[0]:
+        signo = 1
+        index = len(binarioPartido[0])
+        binario = '0.'+binarioPartido[0]+binarioPartido[1]
+    else:
+        signo = 0
+        index = -1
+        for i in binario:
+            if i == '1': break
+            binario = binario[1:]
+            index += 1
+        binario = '0.'+binario
+
     exponenteBinario = base10_base2(float(index), 0).split('.')[0]
     ceros_faltantes = bits_exponente-len(exponenteBinario)
     ceros_exponente = ''
@@ -56,22 +60,20 @@ def normalizar_bin(bits_exponente, binario):
     exponenteBinario = ceros_exponente + exponenteBinario
 
     return {
-        'binarioNormalizado': binarioPartido,
-        'exponente': exponenteBinario
+        'binarioNormalizado': binario,
+        'exponente': exponenteBinario,
+        'signo': signo
         }
 
-def almacenar_en_maquina(maquina, numero):
+    if numero < 0: 
+        numero *= -1
+        maquina['signoMant'] = 0
     binario = base10_base2(float(numero), maquina['bits_mantisa'])
-    print(binario)
     normalzado = normalizar_bin(maquina['bits_exponente'], binario)
-    print(normalzado)
     maquina['mantisa'] = normalzado['binarioNormalizado'][3:maquina['bits_mantisa']+3]
     maquina['exponente'] = normalzado['exponente'][0:maquina['bits_exponente']]
-    print(maquina)
+    maquina['signoExp'] = normalzado['signo']
     return maquina
-
-# FIXME: Corregir exponente negativo
-almacenar_en_maquina(crear_maquina(7,23), 8.2)
 
 def binary_to_integer(number_binary):
     
@@ -145,4 +147,65 @@ def maquina_to_cadena(maquina):
     return cadena
 
         
-        
+def almacenar_en_maquina(maquina, numero):
+
+    binario = base10_base2(float(numero), maquina['bits_mantisa'])
+    print(binario)
+    normalzado = normalizar_bin(maquina['bits_exponente'], binario)
+    print(normalzado)
+    maquina['mantisa'] = normalzado['binarioNormalizado'][3:maquina['bits_mantisa']+3]
+    maquina['exponente'] = normalzado['exponente'][0:maquina['bits_exponente']]
+    print(maquina)
+    return maquina
+
+def sum_or_rest_or_mult(maquina,operation):
+    sum1 = 0
+    sum2 = 0
+
+    operation = operation
+
+    res1 = 0 
+    res2 = 0
+    
+    mul1 = 0
+    mul2 = 0
+
+    result = 0
+    
+    
+    if '+' in operation:
+        sum1,sum2 = operation.split("+")
+        sum1 = float(sum1.replace(" ",""))
+        sum2 = float(sum2.replace(" ",""))
+
+        almacenar_sum1 = almacenar_en_maquina(maquina,sum1)
+        almacenar_sum1 = maquina_to_cadena(almacenar_sum1)
+
+        almacenar_sum2 = almacenar_en_maquina(maquina,sum2)
+        almacenar_sum2 = maquina_to_cadena(almacenar_sum2)
+        return int(almacenar_sum1) + int(almacenar_sum2)
+
+    if '-' in operation:
+        res1,res2 = operation.split("-")
+        res1 = float(res1.replace(" ",""))
+        res2 = float(res2.replace(" ",""))
+
+        almacenar_res1 = almacenar_en_maquina(maquina,res1)
+        almacenar_res1 = maquina_to_cadena(almacenar_res1)
+
+        almacenar_res2 = almacenar_en_maquina(maquina,res2)
+        almacenar_res2 = maquina_to_cadena(almacenar_res2)
+        return int(almacenar_res1) - int(almacenar_res2)
+
+    if '*' in operation:
+        mul1,mul2 = operation.split("*")
+        mul2 = float(mul2.replace(" ",""))
+        mul1 = float(mul1.replace(" ",""))
+
+        almacenar_mul1 = almacenar_en_maquina(maquina,mul1)
+        almacenar_mul1 = maquina_to_cadena(almacenar_mul1)
+
+        almacenar_mul2 = almacenar_en_maquina(maquina,mul2)
+        almacenar_mul2 = maquina_to_cadena(almacenar_mul2)
+        return int(almacenar_mul1) * int(almacenar_mul2)
+

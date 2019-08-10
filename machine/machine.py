@@ -1,4 +1,5 @@
 #!/usr/bin/env python
+# -*- coding: utf-8 -*-
 
 import unicodedata
 import maquina32
@@ -39,6 +40,7 @@ def seleccionarOpcion():
 
 
 print ("Bienvenido maquina de 32 bits")
+operation = ''
 maquina = solicitarMaquina()
 while True :
     opcion = seleccionarOpcion()
@@ -53,7 +55,7 @@ while True :
         if len(numero) is not 0:
             maquina = maquina32.almacenar_en_maquina(maquina, numero)
             maquina = maquina32.maquina_to_cadena(maquina)
-            print('El resultado es: ',maquina)
+            print('El numero que guarda la maquina es: ',maquina)
 
         else:
             print ("Input invalido")
@@ -65,11 +67,32 @@ while True :
         else:
             print ("Input invalido")
     elif opcion == 6:
-        6
+
+        operation = str(input('Operacion: '))
+        if '+' in operation:
+            result = maquina32.sum_or_rest_or_mult(maquina,operation)
+            print('El resultado es: ',result)
+        else:
+            print ("Input invalido")
+        
     elif opcion == 7:
-        7
+        operation = str(input('Operacion: '))
+
+        if '-' in operation:
+            result = maquina32.sum_or_rest_or_mult(maquina,operation)
+            print('El resultado es: ',result)
+        else:
+            print ("Input invalido")
+
     elif opcion == 8:
-        8
+        operation = str(input('Operacion: '))
+
+        if '*' in operation:
+            result = maquina32.sum_or_rest_or_mult(maquina,operation)
+            print('El resultado es: ',result)
+        else:
+            print ("Input invalido")
+
     elif opcion == 9:
         9
     elif opcion == 10:

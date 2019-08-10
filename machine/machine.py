@@ -1,10 +1,10 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-
 import unicodedata
 import maquina32
  
 def solicitarMaquina():
+
     digitosValidos = False
 
     while not digitosValidos:
@@ -22,6 +22,7 @@ def solicitarMaquina():
     return maquina
 
 def seleccionarOpcion():
+
     salir = False
     while not salir:
         print("\n Seleccione una opcion")
@@ -42,7 +43,9 @@ def seleccionarOpcion():
 print ("Bienvenido maquina de 32 bits")
 operation = ''
 maquina = solicitarMaquina()
+
 while True :
+
     opcion = seleccionarOpcion()
     if opcion == 1:
         1
@@ -51,6 +54,7 @@ while True :
     elif opcion == 3:
         3
     elif opcion == 4:
+
         numero = input("Introduce el numero en base 10: ")
         if len(numero) is not 0:
             maquina = maquina32.almacenar_en_maquina(maquina, numero)
@@ -61,11 +65,13 @@ while True :
             print ("Input invalido")
         
     elif opcion == 5:
+
         cadena = input("Introduce el numero en base 10: ")
         if len(cadena) is not 0:
             print("El resultado es: ", maquina32.binary_to_integer(cadena))
         else:
             print ("Input invalido")
+
     elif opcion == 6:
 
         operation = str(input('Operacion: '))
@@ -76,6 +82,7 @@ while True :
             print ("Input invalido")
         
     elif opcion == 7:
+
         operation = str(input('Operacion: '))
 
         if '-' in operation:
@@ -85,6 +92,7 @@ while True :
             print ("Input invalido")
 
     elif opcion == 8:
+        
         operation = str(input('Operacion: '))
 
         if '*' in operation:

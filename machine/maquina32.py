@@ -1,4 +1,5 @@
 def crear_maquina(bits_exponente, bits_mantisa):
+
     if bits_exponente + bits_mantisa != 30:
         return False
     else:    
@@ -12,27 +13,26 @@ def crear_maquina(bits_exponente, bits_mantisa):
         }
 
 def entero_aux(num): 
+
     while num > 1: 
         num /= 10
+
     if num == 0: num = 0.0
     elif num == 1: num = 0.1
+
     return num  
 
 def base10_base2(number, places): 
   
     whole, dec = str(number).split(".") 
-  
     whole = int(whole) 
     dec = int (dec) 
-    
     res = bin(whole).lstrip("0b") + "."
   
     for x in range(places): 
   
         whole, dec = str((entero_aux(dec)) * 2).split(".") 
-  
         dec = int(dec) 
-        
         res += whole 
   
     return res 
@@ -41,21 +41,26 @@ def normalizar_bin(bits_exponente, binario):
 
     binarioPartido = binario.split('.')
     if '1' in binarioPartido[0]:
+
         signo = 1
         index = len(binarioPartido[0])
         binario = '0.'+binarioPartido[0]+binarioPartido[1]
+
     else:
         signo = 0
         index = -1
+
         for i in binario:
             if i == '1': break
             binario = binario[1:]
             index += 1
+
         binario = '0.'+binario
 
     exponenteBinario = base10_base2(float(index), 0).split('.')[0]
     ceros_faltantes = bits_exponente-len(exponenteBinario)
     ceros_exponente = ''
+
     for i in range(ceros_faltantes): ceros_exponente = ceros_exponente + '0'
     exponenteBinario = ceros_exponente + exponenteBinario
 
@@ -66,13 +71,16 @@ def normalizar_bin(bits_exponente, binario):
         }
 
     if numero < 0: 
+
         numero *= -1
         maquina['signoMant'] = 0
+
     binario = base10_base2(float(numero), maquina['bits_mantisa'])
     normalzado = normalizar_bin(maquina['bits_exponente'], binario)
     maquina['mantisa'] = normalzado['binarioNormalizado'][3:maquina['bits_mantisa']+3]
     maquina['exponente'] = normalzado['exponente'][0:maquina['bits_exponente']]
     maquina['signoExp'] = normalzado['signo']
+
     return maquina
 
 def binary_to_integer(number_binary):
@@ -118,19 +126,25 @@ def maquina_to_cadena(maquina):
     cadena = []
 
     if sign_exponente == 0:
+
         for i in bit_significativo:
+
             if index == exponente:
                 break
             cadena.append('0')
             index += 1
+            
         cadena = str("".join(cadena))
         cadena = cadena + '.' + bit_significativo[exponente:]
 
     else:
         for i in bit_significativo:
+
             cadena.append(i)
             index += 1
+
             if index == exponente:
+
                 cadena.append(i)
                 cadena = str("".join(cadena))
                 index += 1
@@ -140,6 +154,7 @@ def maquina_to_cadena(maquina):
     
     
     cadena = binary_to_integer(cadena)
+
     if sign_mantiza == 0:
         cadena = '-' + cadena
     else:
@@ -151,29 +166,30 @@ def almacenar_en_maquina(maquina, numero):
 
     binario = base10_base2(float(numero), maquina['bits_mantisa'])
     print(binario)
+
     normalzado = normalizar_bin(maquina['bits_exponente'], binario)
     print(normalzado)
+
     maquina['mantisa'] = normalzado['binarioNormalizado'][3:maquina['bits_mantisa']+3]
     maquina['exponente'] = normalzado['exponente'][0:maquina['bits_exponente']]
     print(maquina)
+
     return maquina
 
 def sum_or_rest_or_mult(maquina,operation):
+
     sum1 = 0
     sum2 = 0
-
     operation = operation
-
     res1 = 0 
     res2 = 0
-    
     mul1 = 0
     mul2 = 0
-
     result = 0
     
     
     if '+' in operation:
+
         sum1,sum2 = operation.split("+")
         sum1 = float(sum1.replace(" ",""))
         sum2 = float(sum2.replace(" ",""))
@@ -186,6 +202,7 @@ def sum_or_rest_or_mult(maquina,operation):
         return int(almacenar_sum1) + int(almacenar_sum2)
 
     if '-' in operation:
+
         res1,res2 = operation.split("-")
         res1 = float(res1.replace(" ",""))
         res2 = float(res2.replace(" ",""))
@@ -198,6 +215,7 @@ def sum_or_rest_or_mult(maquina,operation):
         return int(almacenar_res1) - int(almacenar_res2)
 
     if '*' in operation:
+
         mul1,mul2 = operation.split("*")
         mul2 = float(mul2.replace(" ",""))
         mul1 = float(mul1.replace(" ",""))

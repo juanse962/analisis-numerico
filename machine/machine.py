@@ -53,33 +53,46 @@ while True :
     elif opcion == 2:
         2
     elif opcion == 3:
-        3
+        3    
     elif opcion == 4:
 
+        print("Puedes pulsar B para regresar al menu anterior \n")
         numero = input("Introduce el numero en base 10: ")
-        if len(numero) is not 0:
+        if numero == 'B': continue
+
+        elif len(numero) is not 0:
             numero = float(numero)
             maquina = maquina32.almacenar_en_maquina(maquina, numero)
             print('signo exponente: ',maquina['signoExp'])
             print('signo mantisa: ',maquina['signoMant'])
             print('exponente: ',maquina['exponente'])
             print('mantisa: ',maquina['mantisa'])
+            print(maquina32.machine_to_string(maquina))
 
         else:
             print ("Input invalido")
         
     elif opcion == 5:
 
+        print("Puedes pulsar B para regresar al menu anterior \n")
+        print('Nota: utilize el punto decimal (.) en vez de la coma (,)')
+
         cadena = input("Introduce el numero en base 2: ")
-        if len(cadena) is not 0:
+        if cadena == 'B': continue
+
+        elif len(cadena) is not 0:
             print("El resultado es: ", maquina32.binary_to_integer(cadena))
         else:
             print ("Input invalido")
 
     elif opcion == 6:
 
+        print("Puedes pulsar B para regresar al menu anterior \n")
         numero1 = input("Numero 1: ")
+        if numero1 == 'B': continue
         numero2 = input("Numero 2: ")
+        if numero2 == 'B': continue
+
         if len(numero1) is not 0 and len(numero2) is not 0:
             print('El resultado es: ',maquina32.sum_or_rest_or_mult(float(numero1), float(numero2), '+', maquina))
         else:
@@ -87,8 +100,12 @@ while True :
         
     elif opcion == 7:
 
+        print("Puedes pulsar B para regresar al menu anterior \n")
         numero1 = input("Numero 1: ")
+        if numero1 == 'B': continue
         numero2 = input("Numero 2: ")
+        if numero2 == 'B': continue
+
         if len(numero1) is not 0 and len(numero2) is not 0:
             print('El resultado es: ',maquina32.sum_or_rest_or_mult(float(numero1), float(numero2), '-', maquina))
         else:
@@ -96,18 +113,30 @@ while True :
 
     elif opcion == 8:
         
+        print("Puedes pulsar B para regresar al menu anterior \n")
         numero1 = input("Numero 1: ")
+        if numero1 == 'B': continue
         numero2 = input("Numero 2: ")
+        if numero2 == 'B': continue
+
         if len(numero1) is not 0 and len(numero2) is not 0:
             print('El resultado es: ',maquina32.sum_or_rest_or_mult(float(numero1), float(numero2), '*', maquina))
         else:
             print ("Input invalido")
 
     elif opcion == 9:
-        maquina = solicitarMaquina()
+
+        print("Puedes pulsar B para regresar al menu anterior \n")
+        crear_maquina = input("Presiona la tecla ENTER para continuar, recuerda la maquina actual se borrara: ")
+        if crear_maquina == 'B': continue
+        elif crear_maquina == '': 
+            maquina = solicitarMaquina()
+        else:
+            print ("Input invalido")   
     elif opcion == 10:
           break
     else:
+        
         print("Opcion invalida")
 
 

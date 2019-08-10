@@ -160,10 +160,10 @@ def maquina_to_cadena(maquina):
     else:
         cadena = '+' + cadena
     return cadena
-
         
 def almacenar_en_maquina(maquina, numero):
     numero= float(numero)
+    print("numero ", numero)
     if numero < 0: 
         numero *= -1
         maquina['signoMant'] = 0

@@ -98,13 +98,13 @@ def binary_to_integer(number_binary):
         for j in range(-1,long_decimal -1,-1):
             if decimal[j] == '1': acum2 += 2**j    
         
-        return str(acum1 + acum2)
+        return acum1 + acum2
 
     else:
         number_binary = number_binary[::-1]    
         for i in range(len(number_binary) -1,-1,-1):
             if number_binary[i] == '1': acum1 += 2**i    
-        return str(acum1)
+        return acum1
 
 def machine_to_string(maquina):
 

@@ -1,5 +1,3 @@
-#!/usr/bin/env python
-# -*- coding: utf-8 -*-
 import maquina32
  
 def solicitarMaquina():
@@ -136,7 +134,7 @@ while True :
     elif opcion == 10:
           break
     else:
-        
+
         print("Opcion invalida")
 
 

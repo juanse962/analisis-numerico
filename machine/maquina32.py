@@ -134,7 +134,7 @@ def machine_to_string(maquina):
     else: return float(cadena)
 
 def almacenar_en_maquina(maquina, numero):
-    
+
     if numero < 0: 
         numero *= -1
         maquina['signoMant'] = 0

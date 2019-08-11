@@ -131,15 +131,11 @@ while True :
             maquina = solicitarMaquina()
         else:
             print ("Input invalido")   
+            
     elif opcion == 10:
           break
     else:
 
         print("Opcion invalida")
 
-
 a = maquina32.crear_maquina(3,3)
-
- 
-
- 

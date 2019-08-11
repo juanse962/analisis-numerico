@@ -84,8 +84,9 @@ def normalizar_bin(bits_exponente, binario):
 def binary_to_integer(number_binary):
     
     acum1 = 0
-    acum2 = 0   
+
     if '.' in number_binary:
+        acum2 = 0   
         integer,decimal = number_binary.split('.')
         integer = integer[::-1]
         decimal = decimal[::-1]
@@ -126,8 +127,7 @@ def machine_to_string(maquina):
             cadena.append(i)
             index += 1
         cadena = str("".join(cadena))
-        cadena_decimal = maquina['mantisa'][exponente-1:-1]
-        cadena = '1' + cadena + '.' + cadena_decimal
+        cadena = '1' + cadena + '.' +  maquina['mantisa'][exponente-1:-1]
         cadena = binary_to_integer(cadena)
     
     if maquina['signoMant'] == 0: return -float(cadena)

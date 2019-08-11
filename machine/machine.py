@@ -65,7 +65,7 @@ while True :
             print('signo mantisa: ',maquina['signoMant'])
             print('exponente: ',maquina['exponente'])
             print('mantisa: ',maquina['mantisa'])
-            print(maquina32.machine_to_string(maquina))
+            print('El numero que guarda la maquina es: ',maquina32.machine_to_string(maquina))
 
         else:
             print ("Input invalido")

@@ -1,7 +1,9 @@
 import maquina32
  
-def solicitarMaquina():
 
+
+def solicitarMaquina():
+ 
     digitosValidos = False
 
     while not digitosValidos:
@@ -21,7 +23,7 @@ def solicitarMaquina():
     return maquina
 
 def seleccionarOpcion():
-
+   
     salir = False
     while not salir:
         print("\n Seleccione una opcion")
@@ -47,11 +49,17 @@ while True :
 
     opcion = seleccionarOpcion()
     if opcion == 1:
-        1
+           
+        print('El resultado es: ',maquina32.mayor(maquina) ) 
+        
     elif opcion == 2:
-        2
+   
+        
+        print('El resultado es: ',maquina32.menor(maquina) )
+
     elif opcion == 3:
-        3    
+      3
+
     elif opcion == 4:
 
         print("Puedes pulsar B para regresar al menu anterior \n")

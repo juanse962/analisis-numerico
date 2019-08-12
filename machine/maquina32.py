@@ -156,3 +156,44 @@ def sum_or_rest_or_mult(numero1, numero2, operacion, maquina):
     if operacion == '+': return numero1 + numero2
     elif operacion == '-': return numero1 - numero2
     else: return numero1 * numero2
+    
+    
+    
+    
+def exponentef (exponente):
+        nExponente = 0;
+        for i in range (0,exponente) :
+            nExponente = nExponente + 2**i;
+        return nExponente    
+    
+    
+def mayor (maquina ):
+    
+
+        parteDecimal = 0;
+       
+        mEntera = 0;
+    
+        nExponente = exponentef (maquina['bits_exponente']);
+    
+    
+        if maquina['bits_mantisa'] + 1 >= nExponente :
+             
+               for i in range (0,nExponente) :
+                   mEntera = mEntera + 2**i; 
+               
+               for j in range (1,maquina['bits_mantisa'] + 1 - nExponente + 1):
+                   parteDecimal = parteDecimal + 2**-j;
+    
+        if maquina['bits_mantisa'] + 1 < nExponente :
+            
+               for i in range (nExponente - maquina['bits_mantisa'] - 1, nExponente):
+                   mEntera = mEntera + 2**i
+    
+        return (mEntera + parteDecimal)  
+        
+def menor (maquina):
+        nExponente = exponentef (maquina['bits_exponente'])
+        exponenteNeg = (nExponente * -1) -1
+        numeroM = (2**exponenteNeg) 
+        return numeroM    

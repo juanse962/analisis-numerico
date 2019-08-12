@@ -108,7 +108,7 @@ def binary_to_integer(number_binary):
 
 def machine_to_string(maquina):
 
-    exponente = int(binary_to_integer(maquina['exponente']))
+    exponente = binary_to_integer(maquina['exponente'])
     index = 0
     cadena = []
 

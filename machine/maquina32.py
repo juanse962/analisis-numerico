@@ -196,4 +196,4 @@ def menor (maquina):
         nExponente = exponentef (maquina['bits_exponente'])
         exponenteNeg = (nExponente * -1) -1
         numeroM = (2**exponenteNeg) 
-        return numeroM    
+        return numeroM

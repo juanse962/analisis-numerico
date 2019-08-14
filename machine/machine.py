@@ -49,19 +49,22 @@ while True :
 
     opcion = seleccionarOpcion()
     if opcion == 1:
-           
-        print('El resultado es: ',maquina32.mayor(maquina) ) 
+        
+        print('El numero mas grande de la maquina es: ',maquina32.mayor(maquina) ) 
         
     elif opcion == 2:
    
         
-        print('El resultado es: ',maquina32.menor(maquina) )
+        print('El numero mas pequenio es: ',maquina32.menor(maquina) )
 
     elif opcion == 3:
-      3
+    
+      epsilon = 2**(maquina['bits_mantisa']*-1)
+      print("El epsilon de la maquina es: ",epsilon)
 
     elif opcion == 4:
 
+        print("\n4. Convertir base 10 a numero de maquina")
         print("Puedes pulsar B para regresar al menu anterior \n")
         numero = input("Introduce el numero en base 10: ")
         if numero == 'B': continue
@@ -80,6 +83,7 @@ while True :
         
     elif opcion == 5:
 
+        print("\n5. Convertir numero de maquina a base 10")
         print("Puedes pulsar B para regresar al menu anterior \n")
         print('Nota: utilize el punto decimal (.) en vez de la coma (,)')
 
@@ -93,7 +97,9 @@ while True :
 
     elif opcion == 6:
 
+        print("\n6. Sumar numeros")
         print("Puedes pulsar B para regresar al menu anterior \n")
+        print("Solo escribe los numeros sin necesidad de (+)")
         numero1 = input("Numero 1: ")
         if numero1 == 'B': continue
         numero2 = input("Numero 2: ")
@@ -106,7 +112,10 @@ while True :
         
     elif opcion == 7:
 
+        print("\n7. Restar numeros")
         print("Puedes pulsar B para regresar al menu anterior \n")
+        print("Solo escribe los numeros sin necesidad de (-)")
+
         numero1 = input("Numero 1: ")
         if numero1 == 'B': continue
         numero2 = input("Numero 2: ")
@@ -119,7 +128,10 @@ while True :
 
     elif opcion == 8:
         
+        print("\n8. Multiplicar numeros")
         print("Puedes pulsar B para regresar al menu anterior \n")
+        print("Solo escribe los numeros sin necesidad de (*)")
+
         numero1 = input("Numero 1: ")
         if numero1 == 'B': continue
         numero2 = input("Numero 2: ")
@@ -132,6 +144,7 @@ while True :
 
     elif opcion == 9:
 
+        print("\n9. Cambiar maquina")
         print("Puedes pulsar B para regresar al menu anterior \n")
         crear_maquina = input("Presiona la tecla ENTER para continuar, recuerda la maquina actual se borrara: ")
         if crear_maquina == 'B': continue

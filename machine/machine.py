@@ -41,7 +41,7 @@ def seleccionarOpcion():
         if len(opcion) is not 0 and opcion.isdigit(): return (int(opcion))
 
 
-print ("Bienvenido maquina de 32 bits")
+print("\033[1mBienvenido maquina de 32 bits\033[0m")
 operation = ''
 maquina = solicitarMaquina()
 

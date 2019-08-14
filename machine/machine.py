@@ -64,7 +64,7 @@ while True :
 
     elif opcion == 4:
 
-        print("\n4. Convertir base 10 a numero de maquina")
+        print("\n\033[1m4. Convertir base 10 a numero de maquina\033[0m")
         print("Puedes pulsar B para regresar al menu anterior \n")
         numero = input("Introduce el numero en base 10: ")
         if numero == 'B': continue
@@ -83,7 +83,7 @@ while True :
         
     elif opcion == 5:
 
-        print("\n5. Convertir numero de maquina a base 10")
+        print("\n\033[1m5. Convertir numero de maquina a base 10\033[0m")
         print("Puedes pulsar B para regresar al menu anterior \n")
         print('Nota: utilize el punto decimal (.) en vez de la coma (,)')
 
@@ -97,9 +97,9 @@ while True :
 
     elif opcion == 6:
 
-        print("\n6. Sumar numeros")
+        print("\n\033[1m6. Sumar numeros\033[0m")
         print("Puedes pulsar B para regresar al menu anterior \n")
-        print("Solo escribe los numeros sin necesidad de (+)")
+        print("Nota: Solo escribe los numeros sin necesidad de (+)")
         numero1 = input("Numero 1: ")
         if numero1 == 'B': continue
         numero2 = input("Numero 2: ")
@@ -112,9 +112,9 @@ while True :
         
     elif opcion == 7:
 
-        print("\n7. Restar numeros")
+        print("\n\033[1m7. Restar numeros\033[0m")
         print("Puedes pulsar B para regresar al menu anterior \n")
-        print("Solo escribe los numeros sin necesidad de (-)")
+        print("Nota: Solo escribe los numeros sin necesidad de (-)")
 
         numero1 = input("Numero 1: ")
         if numero1 == 'B': continue
@@ -128,9 +128,9 @@ while True :
 
     elif opcion == 8:
         
-        print("\n8. Multiplicar numeros")
+        print("\n\033[1m8. Multiplicar numeros\033[0m")
         print("Puedes pulsar B para regresar al menu anterior \n")
-        print("Solo escribe los numeros sin necesidad de (*)")
+        print("Nota: Solo escribe los numeros sin necesidad de (*)")
 
         numero1 = input("Numero 1: ")
         if numero1 == 'B': continue
@@ -144,7 +144,7 @@ while True :
 
     elif opcion == 9:
 
-        print("\n9. Cambiar maquina")
+        print("\n\033[1m9. Cambiar maquina\033[0m")
         print("Puedes pulsar B para regresar al menu anterior \n")
         crear_maquina = input("Presiona la tecla ENTER para continuar, recuerda la maquina actual se borrara: ")
         if crear_maquina == 'B': continue

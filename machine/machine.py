@@ -66,6 +66,7 @@ while True :
 
         print("\n\033[1m4. Convertir base 10 a numero de maquina\033[0m")
         print("Puedes pulsar B para regresar al menu anterior \n")
+        print('Nota: utilize el punto decimal (.) en vez de la coma (,)')
         numero = input("Introduce el numero en base 10: ")
         if numero == 'B': continue
 
@@ -91,7 +92,7 @@ while True :
         if cadena == 'B': continue
 
         elif len(cadena) is not 0:
-            print("El resultado es: ", maquina32.binary_to_integer(cadena))
+            print("El numero en decimal es: ", maquina32.binary_to_integer(cadena))
         else:
             print ("Input invalido")
 
@@ -154,7 +155,8 @@ while True :
             print ("Input invalido")   
             
     elif opcion == 10:
-          break
+        print('Hasta luego.')
+        break
     else:
 
         print("Opcion invalida")

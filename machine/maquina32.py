@@ -1,16 +1,12 @@
 def crear_maquina(bits_exponente, bits_mantisa):
-    
-    if bits_exponente + bits_mantisa != 30:
-        return False
-    else:    
-        return {
-            "bits_exponente": bits_exponente,
-            "bits_mantisa": bits_mantisa,
-            "signoMant": 1,
-            "signoExp": 1,
-            "exponente": 1,
-            "mantisa": 1
-        }
+    return {
+        "bits_exponente": bits_exponente,
+        "bits_mantisa": bits_mantisa,
+        "signoMant": 1,
+        "signoExp": 1,
+        "exponente": 1,
+        "mantisa": 1
+    }
 
 def entero_aux(num): 
 
@@ -106,33 +102,6 @@ def binary_to_integer(number_binary):
             if number_binary[i] == '1': acum1 += 2**i    
         return acum1
 
-def machine_to_string(maquina):
-
-    exponente = binary_to_integer(maquina['exponente'])
-    index = 0
-    cadena = []
-
-    if  int(maquina['signoExp']) == 0:
-
-        for i in range(0,exponente,1):
-            cadena.append('0')
-        cadena = str("".join(cadena))
-        cadena = '0.' + cadena + maquina['mantisa']
-        cadena = binary_to_integer(cadena)
-        
-    else:
-
-        for i in maquina['mantisa']:
-            if index == (exponente-1):break
-            cadena.append(i)
-            index += 1
-        cadena = str("".join(cadena))
-        cadena = '1' + cadena + '.' +  maquina['mantisa'][exponente-1:-1]
-        cadena = binary_to_integer(cadena)
-    
-    if maquina['signoMant'] == 0: return -float(cadena)
-    else: return float(cadena)
-
 def almacenar_en_maquina(maquina, numero):
 
     if numero < 0: 
@@ -148,25 +117,39 @@ def almacenar_en_maquina(maquina, numero):
 def sum_or_rest_or_mult(numero1, numero2, operacion, maquina):
 
     maquina = almacenar_en_maquina(maquina, numero1)
-    numero1 = machine_to_string(maquina)
+    numero1 = maquina_to_binario(maquina)
 
     maquina = almacenar_en_maquina(maquina, numero2)
-    numero2 = machine_to_string(maquina) 
+    numero2 = maquina_to_binario(maquina) 
     
     if operacion == '+': return numero1 + numero2
     elif operacion == '-': return numero1 - numero2
     else: return numero1 * numero2
     
-    
-    
-    
+def maquina_to_binario(maquina):
+
+    numero = '1'+maquina['mantisa']
+    exponente = binary_to_integer(maquina['exponente'])
+
+    if maquina['signoExp'] == 1:
+        numero = numero[:exponente] + '.' + numero[exponente:]
+    else:
+        ceros = ''
+        for i in range(exponente): 
+            ceros = '0'+ceros 
+        numero = '0.'+ceros+numero
+
+    numero = binary_to_integer(numero)
+    if maquina['signoMant'] == 0: numero = numero * -1
+
+    return numero
+        
 def exponentef (exponente):
     
         nExponente = 0;
         for i in range (0,exponente) :
             nExponente = nExponente + 2**i;
-        return nExponente    
-    
+        return nExponente        
     
 def mayor (maquina ):
     

@@ -108,6 +108,7 @@ def almacenar_en_maquina(maquina, numero):
         numero *= -1
         maquina['signoMant'] = 0
     binario = base10_base2(numero,maquina['bits_mantisa'])
+    print(binario)
     normalzado = normalizar_bin(maquina['bits_exponente'], binario)
     maquina['mantisa'] = normalzado['binarioNormalizado'][3:maquina['bits_mantisa']+3]
     maquina['exponente'] = normalzado['exponente'][0:maquina['bits_exponente']]
@@ -131,50 +132,55 @@ def maquina_to_binario(maquina):
     numero = '1'+maquina['mantisa']
     exponente = binary_to_integer(maquina['exponente'])
 
-    if maquina['signoExp'] == 1:
+    if maquina['signoExp'] == 1 and exponente < len(numero):
         numero = numero[:exponente] + '.' + numero[exponente:]
+
+    elif maquina['signoExp'] == 1 and exponente >= len(numero):
+        exponente = exponente - len(numero)
+        ceros = ''
+        for i in range(exponente): 
+            ceros = '0'+ceros 
+        numero = numero + ceros + '.0'
+
     else:
         ceros = ''
         for i in range(exponente): 
             ceros = '0'+ceros 
-        numero = '0.'+ceros+numero
+        numero = '0.' + ceros + numero
 
     numero = binary_to_integer(numero)
     if maquina['signoMant'] == 0: numero = numero * -1
 
     return numero
-        
-def exponentef (exponente):
-    
-        nExponente = 0;
-        for i in range (0,exponente) :
-            nExponente = nExponente + 2**i;
-        return nExponente        
-    
-def mayor (maquina ):
-    
-        parteDecimal = 0;
-        mEntera = 0;
-        nExponente = exponentef (maquina['bits_exponente']);
-    
-        if maquina['bits_mantisa'] + 1 >= nExponente :
-             
-               for i in range (0,nExponente) :
-                   mEntera = mEntera + 2**i; 
-               
-               for j in range (1,maquina['bits_mantisa'] + 1 - nExponente + 1):
-                   parteDecimal = parteDecimal + 2**-j;
-    
-        if maquina['bits_mantisa'] + 1 < nExponente :
-            
-               for i in range (nExponente - maquina['bits_mantisa'] - 1, nExponente):
-                   mEntera = mEntera + 2**i
-    
-        return (mEntera + parteDecimal)  
-        
-def menor (maquina):
 
-        nExponente = exponentef (maquina['bits_exponente'])
-        exponenteNeg = (nExponente * -1) -1
-        numeroM = (2**exponenteNeg) 
-        return numeroM
+def calcularMayor(maquina):
+
+    exponente = maquina['bits_exponente']
+    mantisa = maquina['bits_mantisa']
+
+    maquinaTemp = {
+        "bits_exponente": exponente,
+        "bits_mantisa": mantisa,
+        "signoMant": 1,
+        "signoExp": 1,
+        "exponente": '1'*exponente,
+        "mantisa": '1'*mantisa
+    }
+
+    return maquina_to_binario(maquinaTemp)
+
+def calcularMenor(maquina):
+
+    exponente = maquina['bits_exponente']
+    mantisa = maquina['bits_mantisa']
+
+    maquinaTemp = {
+        "bits_exponente": exponente,
+        "bits_mantisa": mantisa,
+        "signoMant": 1,
+        "signoExp": 0,
+        "exponente": '1'*exponente,
+        "mantisa": '0'*mantisa
+    }
+
+    return maquina_to_binario(maquinaTemp)

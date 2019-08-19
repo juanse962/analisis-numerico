@@ -50,12 +50,12 @@ while True :
     opcion = seleccionarOpcion()
     if opcion == 1:
         
-        print('El numero mas grande de la maquina es: ',maquina32.mayor(maquina) ) 
+        print('El numero mas grande de la maquina es: ',maquina32.calcularMayor(maquina) ) 
         
     elif opcion == 2:
    
         
-        print('El numero mas pequenio es: ',maquina32.menor(maquina) )
+        print('El numero mas pequenio es: ',maquina32.calcularMenor(maquina) )
 
     elif opcion == 3:
     

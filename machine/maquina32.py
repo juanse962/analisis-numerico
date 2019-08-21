@@ -51,7 +51,7 @@ def normalizar_bin(bits_exponente, binario):
 
         binario = '0.'+binario
 
-    exponenteBinario = base10_base2(float(index), 0).split('.')[0]
+    exponenteBinario = num(float(index), 0).split('.')[0]
     ceros_faltantes = bits_exponente-len(exponenteBinario)
     ceros_exponente = ''
 
@@ -69,7 +69,7 @@ def normalizar_bin(bits_exponente, binario):
         numero *= -1
         maquina['signoMant'] = 0
 
-    binario = base10_base2(float(numero), maquina['bits_mantisa'])
+    binario = num(float(numero), maquina['bits_mantisa'])
     normalzado = normalizar_bin(maquina['bits_exponente'], binario)
     maquina['mantisa'] = normalzado['binarioNormalizado'][3:maquina['bits_mantisa']+3]
     maquina['exponente'] = normalzado['exponente'][0:maquina['bits_exponente']]
@@ -107,7 +107,7 @@ def almacenar_en_maquina(maquina, numero):
     if numero < 0: 
         numero *= -1
         maquina['signoMant'] = 0
-    binario = base10_base2(numero,maquina['bits_mantisa'])
+    binario = num(numero,maquina['bits_mantisa'])
     print(binario)
     normalzado = normalizar_bin(maquina['bits_exponente'], binario)
     maquina['mantisa'] = normalzado['binarioNormalizado'][3:maquina['bits_mantisa']+3]
@@ -184,3 +184,26 @@ def calcularMenor(maquina):
     }
 
     return maquina_to_binario(maquinaTemp)
+
+
+def num(numero,parar):
+    numero = str(numero)
+    index = numero.find('.')
+    numero = "".join(numero)
+    entera = numero[:index]
+    entera = entera.lstrip('0')
+    decimal = numero[index+1:]
+    lista = []
+    if entera == '': entera = '0'
+    entera = bin(int(entera))[2:]
+    decimal ='0.' + decimal
+    for i in range(0,parar):
+        decimal = str(float(decimal) * 2)
+        if decimal[0] == '0':
+            lista.append('0')
+            decimal = str(decimal)
+        else:
+            lista.append('1')
+            decimal = str(float(decimal)-1)
+    lista = "".join(lista)
+    return entera +'.' +lista

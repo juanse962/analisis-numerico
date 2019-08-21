@@ -162,4 +162,3 @@ while True :
 
         print("Opcion invalida")
 
-a = maquina32.crear_maquina(3,3)

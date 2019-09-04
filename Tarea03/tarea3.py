@@ -38,7 +38,6 @@ def biseccion_esfera(intervalo,niter,tolerancia,function_circulo,v,a):
                 fxf_circulo = function_circulo.subs(x, rf[0]).subs(y, rf[1]).subs(z, rf[2])
 
             else:
-
                 xi = xm
                 yi = ym
                 zi = zm

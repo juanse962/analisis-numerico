@@ -24,7 +24,8 @@ def biseccion_esfera(intervalo,niter,tolerancia,function_circulo,v,a):
         xm = (xi+xf)/2
         ym = (yi+yf)/2
         zm = (zi+zf)/2
-        fxm_circulo = function_circulo.subs(x, xm).subs(y, ym).subs(z, zm)
+        rm = recta_r3([(xm, ym, zm)], [(xm,ym, zm)],a,v)
+        fxm_circulo = function_circulo.subs(x, xm).subs(y,ym).subs(z,zm)
         count = 1
         error = float(tolerancia) + 1
 

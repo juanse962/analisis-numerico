@@ -100,14 +100,13 @@ def busqueda_esfera(p0,p1,delta,niter, function_esfera):
 
     return intervalos,v,a
 
-def raices_circunferencia(p0,p1,delta,niter):
+def raices_circunferencia(p0,p1,delta,niter,tolerancia,function_esfera):
 
     print("-----Raices en r3-----\n")
-    function_esfera = x**2+y**2+z**2 - 4
     intervalos = busqueda_esfera(p0, p1, delta, niter, function_esfera)
 
     for i in range(len(intervalos[0])):
-        raiz = biseccion_esfera([intervalos[0][i]],niter,0.00048,function_esfera,intervalos[1],intervalos[2])
+        raiz = biseccion_esfera([intervalos[0][i]],niter,tolerancia,function_esfera,intervalos[1],intervalos[2])
         print ("Para el intervalo: {0} tiene una raiz en: {1}\n".format(intervalos[0][i],raiz))
 
-raices_circunferencia([-2.08,-0.19,0],[1.25,-0.59,1.45],0.2,100)
+raices_circunferencia([-2.08,-0.19,0],[1.25,-0.59,1.45],0.2,100,0.00048,x**2+y**2+z**2 - 4)

@@ -17,7 +17,7 @@ def fixed_point(tolerance,xa,niter):
     error = abs(xn-xa)
     xa = xn
     count += 1
-  if fx == 0:
+  if fxa == 0:
     print("{xa} is a root")
   elif error < tolerance:
     print("{0} It is a root with tolerance = {1}".format(xa,tolerance))

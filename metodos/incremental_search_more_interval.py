@@ -1,6 +1,6 @@
 from sympy import *
 import math
-# log(x**2+1) +x*cos(6*x+3)-3*x-10
+
 x = symbols('x')
 function = sin(x)
 

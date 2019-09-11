@@ -5,16 +5,15 @@ import math
 def fixed_point(tolerance,xa,niter):
   x = symbols('x')
 
+  fx = x*(math.e**x)-(x**2)-5*x-3
+  gx = (x*(math.e**x)-(x**2)-3)/5
 
-  fx = x**2+1-math.e**(x)
-
-  gx = log(x**2+1)
-  fx = fx.subs(x,xa)
+  fxa = fx.subs(x,xa)
   count = 0
   error = tolerance +1
-  while (fx != 0) and (error >tolerance) and (count < niter):
+  while (fxa != 0) and (error >tolerance) and (count < niter):
     xn = gx.subs(x,xa)
-    fx = fx.subs(x,xn)
+    fxa = fx.subs(x,xn)
     error = abs(xn-xa)
     xa = xn
     count += 1
@@ -25,4 +24,4 @@ def fixed_point(tolerance,xa,niter):
   else:
     print("fail the number of iterations {0}".format(niter))
 
-fixed_point(0.000048,-0.5,100)
+fixed_point(0.0005,-0.5,11)

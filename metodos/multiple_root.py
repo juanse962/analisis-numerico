@@ -35,6 +35,6 @@ while (error > tolerance) and (fx !=0) and (count < niter) and (denominator != 0
 if fx == 0:
     print("{0} It's a root".format(xi))
 elif error < tolerance:
-    print("{0} approximately and a tolerance = {1}".format(xi,error))
+    print("{0} approximately and a tolerance = {1}".format(xi,tolerance))
 else:
         print("Failure of the number of iterations") 

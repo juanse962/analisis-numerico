@@ -2,9 +2,9 @@ from sympy import *
 import math
 
 x = symbols('x')
-function = x**3 - 5*x**2 +7*x -3
-first_derivative = 3*x**2 - 10*x + 7
-second_derivative = 6*x - 10
+function = (x-3)*(x-1)**2
+first_derivative = (x-1)**2 + 2*(x-1)*(x-3)
+second_derivative = 2*(x-1)+2*(x-3)+2*(x-1)
 
 xi = input("Start point: ") 
 tolerance = input("number of tolerance: ")
@@ -35,6 +35,6 @@ while (error > tolerance) and (fx !=0) and (count < niter) and (denominator != 0
 if fx == 0:
     print("{0} It's a root".format(xi))
 elif error < tolerance:
-    print("{0} approximately and a tolerance = {1}".format(xi,tolerance))
+    print("{0} approximately and a tolerance = {1}".format(xi,error))
 else:
         print("Failure of the number of iterations") 

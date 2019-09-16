@@ -32,7 +32,7 @@ for i in range(0,len(augmented_matrix)-1):
 print("\nStage {0}\n".format(num))      
 print(augmented_matrix)
         
-x = list(augmented_matrix[:,4]) 
+x = augmented_matrix[:,len(augmented_matrix)] 
 count = 0        
 for i in range(len(augmented_matrix)-1,-1,-1):
     for j in range(i+1,len(augmented_matrix)):

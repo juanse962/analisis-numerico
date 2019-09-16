@@ -37,4 +37,4 @@ if fx == 0:
 elif error < tolerance:
     print("{0} approximately and a tolerance = {1}".format(xi,tolerance))
 else:
-        print("Failure of the number of iterations") 
+    print("Failure of the number of iterations") 

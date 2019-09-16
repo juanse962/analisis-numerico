@@ -34,7 +34,7 @@ for i in range(len(augmented_matrix)-1,-1,-1):
     for p in range(i+1,len(augmented_matrix)):
         count = count + augmented_matrix[i][p] * augmented_matrix[p] 
         
-x = augmented_matrix[:,4:] 
+x = list(augmented_matrix[:,4]) 
 count = 0        
 
 for i in range(len(augmented_matrix)-1,-1,-1):

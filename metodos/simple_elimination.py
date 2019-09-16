@@ -45,4 +45,3 @@ for i in range(len(augmented_matrix)-1,-1,-1):
 print("\n-----Solution-----")
 for i in range(0,len(x)):
     print("x{0} = {1}".format(i+1,x[i]))
-           

@@ -8,10 +8,11 @@ A = np.array([[5,0,4],
 
 
 def dd(A):
-    D = np.diag(np.abs(A)) # Find diagonal coefficients
-    S = np.sum(np.abs(A), axis=1) - D # Find row sum without diagonal
+    D = np.diag(np.abs(A)) 
+    S = np.sum(np.abs(A), axis=1) - D 
     if np.all(D > S):
         print('La matriz es diagonal dominante')
     else:
-        print('NO es diagonal dominante')
+        print('No, es diagonal dominante')
 dd(A)
+

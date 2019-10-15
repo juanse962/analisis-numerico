@@ -11,8 +11,8 @@ def dd(A):
     D = np.diag(np.abs(A)) 
     S = np.sum(np.abs(A), axis=1) - D 
     if np.all(D > S):
-        print('La matriz es diagonal dominante')
+        return True
     else:
-        print('No, es diagonal dominante')
-dd(A)
+        return False
 
+print(dd(A))

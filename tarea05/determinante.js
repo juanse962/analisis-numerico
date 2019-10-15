@@ -58,3 +58,5 @@ console.log('Determinante', determinanteRecursivo(m5));
 
 console.table(m6);
 console.log('Determinante', determinanteRecursivo(m6));
+
+

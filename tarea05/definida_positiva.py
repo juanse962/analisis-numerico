@@ -1,5 +1,4 @@
 import numpy as np
-import sympy 
 
 
 A = np.array([[4,-1,1],

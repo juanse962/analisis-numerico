@@ -1,0 +1,17 @@
+import numpy as np
+
+
+A = np.array([[5,0,4],
+              [2,12,5],
+              [2,3,6]]) #True
+# A = np.array([[5,0,4],[4,12,8],[2,3,6]]) #False
+
+
+def dd(A):
+    D = np.diag(np.abs(A)) # Find diagonal coefficients
+    S = np.sum(np.abs(A), axis=1) - D # Find row sum without diagonal
+    if np.all(D > S):
+        print('La matriz es diagonal dominante')
+    else:
+        print('NO es diagonal dominante')
+dd(A)

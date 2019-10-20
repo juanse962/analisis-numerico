@@ -1,20 +1,26 @@
-print("------- Interpolacion Polinomica (Lagrange) -------")
+print("------- POLYNOMIAL INTERPOLATION (Lagrange) -------")
+import numpy as np
+import sympy as sym
 
-x = 2.5
-xp = [1.0, 2.0, 3.0]
-yp = [1.0, 8.0, 27.0]
+xp = 2.5
+xi = np.array([1, 3, 4, 5, 7])
+fi = np.array([4.31, 1.5, 3.2, 2.6,1.8])
 
-numberOfPoints = len(xp)
-y = 0
+n = len(xi)
+x = sym.Symbol('x')
 
-for i in range(numberOfPoints):
-        product = yp[i]
-        for j in range(numberOfPoints):
-            if i != j:
-                product *= (x - xp[j])/(xp[i] - xp[j])
+polynomial = 0
+for i in range(0,n,1):
+    term = 1
+    for j  in range(0,n,1):
+        if (j!=i):
+            term = term*(x-xi[j])/(xi[i]-xi[j])
+    polynomial = polynomial + term*fi[i]
 
-        y += product
+px = polynomial.expand()
+pxn = sym.lambdify(x,polynomial)
 
-
-zipped_x_y = list(zip(xp, yp))
-print("interpolated value  f({}) is = {}".format(x,y))
+print('\nLagrange polynomial: ')
+print(px,'\n')
+print('Evaluate: ')
+print(px.subs(x,xp))
